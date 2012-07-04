@@ -18,9 +18,12 @@ Alternatively, if github allows you, you can drag
 
 Usage
 =====
-> These are HTML pages from various repos. You can go to them and click on the "git-html" bookmark to render them. 
+These are HTML pages from various repos.<br>
+Browse them and click on the "git-html" bookmark to render them. 
 
-> It might also help if you unblock pop-ups for *.github.com
+Note: make sure you allow pop-ups from *.github.com in your browser.
+
+> Note 2: This works best with Chrome or Safari. Firefox won't load js and css files for some of these links. Will fix soon.
 
 * <a href="https://github.com/ryt/githtml/blob/master/example.html">Example Page</a>
 * <a href="https://github.com/mrdoob/three.js/blob/master/examples/canvas_interactive_cubes_tween.html">Three.js 1</a>
