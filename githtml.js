@@ -2,15 +2,15 @@
 /*!
  * githtml.js
  * github.com/ryt/githtml
- * Copyright 2012, Rediat Mentose
+ * Copyright 2012, Rediat Mentoses
  */
   var gitHtml = {
     decode: (function(el,str){
       if(str && typeof str === 'string'){
-        str = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
-        str = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
-        el.innerHTML = str;
-        str = el.textContent;
+        str            = str.replace(/<script[^>]*>([\S\s]*?)<\/script>/gmi, '');
+        str            = str.replace(/<\/?\w(?:[^"'>]|"[^"]*"|'[^']*')*>/gmi, '');
+        el.innerHTML   = str;
+        str            = el.textContent;
         el.textContent = '';
       }
       return str;
@@ -19,7 +19,7 @@
      top.consoleRef=window.open('',
       'gitHtml',
       'width='+w+',height='+h+','+
-       'menubar=,toolbar=1,status=,'+
+       'menubar=0,toolbar=1,status=0,'+
        'scrollbars=1,resizable=1'
       )
      top.consoleRef.document.writeln(c);
