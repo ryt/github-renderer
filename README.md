@@ -9,12 +9,12 @@ Install
 * Copy and paste the following code as the link or URL of the bookmark. 
 
 ```javascript
-javascript:(function(){var d=document,s=d.createElement('script');s.src='//raw.github.com/ryt/githtml/master/githtml.min.js?1';d.body.appendChild(s);})();
+javascript:(function(){var d=document,s=d.createElement('script');s.src='//raw.github.com/ryt/githtml/master/githtml.min.js?2';d.body.appendChild(s);})();
 ```
 
 
 Alternatively, if github allows you, you can drag 
-<a href="javascript:(function(){var d=document,s=d.createElement('script');s.src='//raw.github.com/ryt/githtml/master/githtml.min.js?1';d.body.appendChild(s);})();" title="git-html">[this]</a> to your bookmarks bar.
+<a href="javascript:(function(){var d=document,s=d.createElement('script');s.src='//raw.github.com/ryt/githtml/master/githtml.min.js?2';d.body.appendChild(s);})();" title="git-html">[this]</a> to your bookmarks bar.
 
 Usage
 =====
