@@ -39,7 +39,7 @@
           pr = pr.replace(/[a-zA-Z0-9-_\.\/\:]+bootstrap[a-zA-Z0-9-_\.\/\:]+/g,link.bootstrap);
           pr = escape(gitHtml.decode(el,pr));
           pr = pr.replace(/http/g,'https'); 
-  	  pr = unescape(pr).replace(/\n/g,'--newline--').replace(/\s/g,' ').replace(/--newline--/g,'\n');
+  	  pr = unescape(pr).replace(/\n/g,'--githtml-newline--').replace(/\s/g,' ').replace(/--githtml-newline--/g,'\n');
       gitHtml.open(1000,700,
         unescape("%3Cbase%20href%3D%22"+escape(lo)+"%22%3E")+pr
       );
