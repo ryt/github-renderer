@@ -16,17 +16,14 @@
       return str;
     }),
     open: (function(w,h,c) {
-     top.cr=window.open('',
+     top.consoleRef=window.open('',
       'gitHtml',
       'width='+w+',height='+h+','+
-       'menubar=,'+
-       'toolbar=1,'+
-       'status=,'+
-       'scrollbars=1,'+
-       'resizable=1'
+       'menubar=,toolbar=1,status=,'+
+       'scrollbars=1,resizable=1'
       )
-     top.cr.document.writeln(c);
-     top.cr.document.close();
+     top.consoleRef.document.writeln(c);
+     top.consoleRef.document.close();
     }),
     start: (function(d){
       var link = {
