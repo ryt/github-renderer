@@ -2,11 +2,8 @@
 /*!
  * githtml.js
  * github.com/ryt/githtml
- *
  * Copyright 2012, Rediat Mentose
- * 
  */
-  
   var gitHtml = {
     decode: (function(el,str){
       if(str && typeof str === 'string'){
@@ -41,9 +38,8 @@
       var hp = $(".highlight pre").html();
       var lo = location.href.replace(/\/blob\//,'/raw/');
       var bh = lo.replace(/\/[a-zA-Z0-9-_\.]+$/,'');
-      var pr = hp.replace(/(<([^>]+)>)/ig,'');
+      var pr = hp.replace(/<div class=[\'|\"]line/g,'\n<div class="line').replace(/(<([^>]+)>)/ig,'');
           pr = pr.replace(/[a-zA-Z0-9-_\.\/\:]+bootstrap[a-zA-Z0-9-_\.\/\:]+/g,link.bootstrap);
-          pr = pr.replace(/(href|src)=\"\//g,'$1="'+bh.replace('https','http')+'/');
           pr = escape(gitHtml.decode(el,pr));
           pr = pr.replace(/http/g,'https');
       gitHtml.open(1000,700,
