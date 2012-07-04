@@ -1,17 +1,20 @@
 githtml
 ===========
-> githtml is a utility that lets you view rendered HTML pages from github repositories.
+> githtml is a utility that lets you view rendered HTML pages from github repositories on the fly.
 
 
 Install
 -------
-Create a new bookmark in your bookmarks bar named `git-html` and add this as the link:
-<pre>
-javascript:(function(){var s=document.createElement('script');s.src='https://raw.github.com/ryt/githtml/master/githtml.min.js?1';document.body.appendChild(s);})();
-</pre>
+* Create a new bookmark in your bookmarks bar named `git-html`<br>
+* Copy and paste the following code as the link or URL of the bookmark. 
+
+```javascript
+javascript:(function(){var d=document,s=d.createElement('script');s.src='//raw.github.com/ryt/githtml/master/githtml.min.js?1';d.body.appendChild(s);})();
+```
+
 
 Alternatively, if github allows you, you can drag 
-<a href="javascript:(function(){var s=document.createElement('script');s.src='https://raw.github.com/ryt/githtml/master/githtml.min.js?1';document.body.appendChild(s);})();" title="git-html">[this]</a> to your bookmarks bar.
+<a href="javascript:(function(){var d=document,s=d.createElement('script');s.src='//raw.github.com/ryt/githtml/master/githtml.min.js?1';d.body.appendChild(s);})();" title="git-html">[this]</a> to your bookmarks bar.
 
 Usage
 =====
