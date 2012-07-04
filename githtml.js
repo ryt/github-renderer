@@ -36,7 +36,7 @@
       var lo = location.href.replace(/\/blob\//,'/raw/');
       var bh = lo.replace(/\/[a-zA-Z0-9-_\.]+$/,'');
       var pr = hp.replace(/<div class=[\'|\"]line/g,'\n<div class="line').replace(/(<([^>]+)>)/ig,'');
-          pr = pr.replace(/[a-zA-Z0-9-_\.\/\:]+bootstrap[a-zA-Z0-9-_\.\/\:]+/g,link.bootstrap);
+          pr = pr.replace(/http\:([a-zA-Z0-9-_\.\/]+)bootstrap[a-zA-Z0-9-_\.\/\:]+css/g,link.bootstrap);
           pr = escape(gitHtml.decode(el,pr));
           pr = pr.replace(/http/g,'https'); 
   	  pr = unescape(pr).replace(/\n/g,'--githtml-newline--').replace(/\s/g,' ').replace(/--githtml-newline--/g,'\n');
