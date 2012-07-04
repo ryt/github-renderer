@@ -7,7 +7,7 @@ Install
 -------
 Create a new bookmark in your bookmarks bar named `git-html` and add this as the link:
 <pre>
-javascript:(function(){var s=document.createElement('script');s.src='https://raw.github.com/ryt/githtml/master/githtml.min.js';document.body.appendChild(s);})();
+javascript:(function(){var s=document.createElement('script');s.src='https://raw.github.com/ryt/githtml/master/githtml.min.js?1';document.body.appendChild(s);})();
 </pre>
 
 Alternatively, if github allows you, you can drag 
