@@ -1,6 +1,6 @@
 githtml
 ===========
-> githtml is a utility that renders github HTML source pages from any repository.
+> githtml is a utility that lets you view rendered HTML pages from github repositories.
 
 > with it, you'll stop wasting time cloning a repo just so you can view the damn `demo.html` file!
 
