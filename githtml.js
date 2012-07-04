@@ -33,8 +33,7 @@
             close.className      = 'minibutton';
             close.href           = 'javascript:;';
             close.onclick        = (function(){
-              d.getElementById('iframe').style.display = 'none';
-              d.removeChild(d.getElementById('iframe'));
+              window.location.reload();
               return false;
             });
         d.body.appendChild(close);
