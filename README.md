@@ -11,7 +11,7 @@ javascript:(function(){var s=document.createElement('script');s.src='https://raw
 </pre>
 
 Alternatively, if github allows you, you can drag 
-<a href="javascript:(function(){var s=document.createElement('script');s.src='https://raw.github.com/ryt/githtml/master/githtml.min.js';document.body.appendChild(s);})();" title="git-html">[this]</a> to your bookmarks bar.
+<a href="javascript:(function(){var s=document.createElement('script');s.src='https://raw.github.com/ryt/githtml/master/githtml.min.js?1';document.body.appendChild(s);})();" title="git-html">[this]</a> to your bookmarks bar.
 
 Usage
 =====
