@@ -15,15 +15,30 @@
       }
       return str;
     }),
-    open: (function(w,h,c) {
-     top.consoleRef=window.open('',
-      'gitHtml',
-      'width='+w+',height='+h+','+
-       'menubar=0,toolbar=1,status=0,'+
-       'scrollbars=1,resizable=1'
-      )
-     top.consoleRef.document.writeln(c);
-     top.consoleRef.document.close();
+    open: (function(c,d) {
+      var ifr                = d.createElement('iframe');
+          ifr.src            = 'about:blank';
+          ifr.style.width    = '100%';
+          ifr.style.height   = '100%';
+          ifr.style.position = 'absolute';
+          ifr.style.top      = '0px';
+          ifr.style.zIndex   = '9999';
+          ifr.id             = 'iframe';
+      d.body.appendChild(ifr);
+      d.body.style.padding   = '0px';
+      d.body.style.margin    = '0px';
+      var ifrm = d.getElementById('iframe');
+          ifrm = (ifrm.contentWindow) 
+               ? ifrm.contentWindow 
+               : (ifrm.contentDocument.document) 
+                  ? ifrm.contentDocument.document 
+                  : ifrm.contentDocument;
+          ifrm.document.open();
+          ifrm.document.write(c);
+          ifrm.document.close();
+          document.onbeforeunload = function(){
+            ifrm.style.display = 'none';
+          }
     }),
     start: (function(d){
       var link = {
@@ -32,7 +47,9 @@
                    '/css/bootstrap.css'
       };
       var el = d.createElement('div');
-      var hp = $(".highlight pre").html();
+      var hp = (typeof jQuery === "undefined") 
+             ? d.getElementsByTagName('pre')[0].innerHTML 
+             : $(".highlight pre").html();
       var lo = location.href.replace(/\/blob\//,'/raw/');
       var bh = lo.replace(/\/[a-zA-Z0-9-_\.]+$/,'');
       var pr = hp.replace(/<div class=[\'|\"]line/g,'\n<div class="line').replace(/(<([^>]+)>)/ig,'');
@@ -40,8 +57,8 @@
           pr = escape(gitHtml.decode(el,pr));
           pr = pr.replace(/http/g,'https'); 
   	  pr = unescape(pr).replace(/\n/g,'--githtml-newline--').replace(/\s/g,' ').replace(/--githtml-newline--/g,'\n');
-      gitHtml.open(1000,700,
-        unescape("%3Cbase%20href%3D%22"+escape(lo)+"%22%3E")+pr
+      gitHtml.open(
+        unescape("%3Cbase%20href%3D%22"+escape(lo)+"%22%3E")+pr,d
       );
     })
   }
