@@ -8,14 +8,17 @@ githtml
 
 Install
 -------
-Drag 
-<a title="git-html" href="javascript:(function(){var s=document.createElement('script'); s.src='https://raw.github.com/ryt/githtml/master/githtml.min.js'; document.body.appendChild(s);})();">
-[this]</a> 
-to your bookmarks bar.
+Create a new bookmark in your bookmarks bar named "git-html" and add this as the link:
+<pre>
+javascript:(function(){var s=document.createElement('script');s.src='https://raw.github.com/ryt/githtml/master/githtml.min.js';document.body.appendChild(s);})();
+</pre>
+
+Alternatively, if github allows you, you can drag 
+<a href="javascript:(function(){var s=document.createElement('script');s.src='https://raw.github.com/ryt/githtml/master/githtml.min.js';document.body.appendChild(s);})();" title="git-html">[this]</a> to your bookmarks bar.
 
 Usage
 =====
-> These are sample test pages. You can go to them and click on your bookmark to render them. 
+> These are sample test pages. You can go to them and click on the "git-html" bookmark to render them. 
 
 > It might also help if you unblock pop-ups for *.github.com
 
