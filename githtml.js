@@ -47,6 +47,9 @@
                   ? ifrm.contentDocument.document 
                   : ifrm.contentDocument;
           ifrm.document.open();
+          if(c.indexOf('githtml.min.js')!=-1){
+            c = '---> click the [x] on the left and try "git-html" again';
+          }
           ifrm.document.write(c);
           ifrm.document.close();
     }),
