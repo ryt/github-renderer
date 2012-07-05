@@ -33,17 +33,23 @@ var gitHtml_l = (function(e){
             "}"+
         "</style>"
       );
-      $(".breadcrumb").append(' '+
-                 "<a href='javascript:;' onclick='gitHtml_l($(this));return false;' class='minibutton gitHtml-activate gitact git-html-btn'>git-html</a> "+
-                 '<div class="tipsy tipsy-w gitHtml-tip" style="display:none;opacity:0.8;padding:2px 5px;margin-left:5px;">'+
-                    '<div class="tipsy-arrow tipsy-arrow-w"></div>'+
-                    '<div class="tipsy-inner git-html-btn" style="max-width:400px;">gitHtml activated. click on any html file below.</div>'+
-                 '</div>');
+      if(location.href.indexOf('.html')>5){
+        $(".bubble#files .file .meta div.info").
+            append("<span class='gitrends git-html-btn'><a href='javascript:;' onclick='gitHtml_r();return false;' class='minibutton git-html-btn'>git-html</a></span>");      
+      } 
+      else {
+        $(".breadcrumb").append(' '+
+                   "<a href='javascript:;' onclick='gitHtml_l($(this));return false;' class='minibutton gitHtml-activate gitact git-html-btn'>git-html</a> "+
+                   '<div class="tipsy tipsy-w gitHtml-tip" style="display:none;opacity:0.8;padding:2px 5px;margin-left:5px;">'+
+                      '<div class="tipsy-arrow tipsy-arrow-w"></div>'+
+                      '<div class="tipsy-inner git-html-btn" style="max-width:400px;">gitHtml activated. click on any html file below.</div>'+
+                   '</div>');
+      }
       $("body").click(function(e){
         if($(e.target).hasClass("git-html-btn")===false){
           var ca = setInterval(function(){ 
             if($(".file-edit-link").is(":visible")){
-              if(location.href.indexOf('.html')!=-1){
+              if(location.href.indexOf('.html')>5){
                   $(".gitrends").remove();
                   $(".bubble#files .file .meta div.info").
                       append("<span class='gitrends git-html-btn'><a href='javascript:;' onclick='gitHtml_r();return false;' class='minibutton git-html-btn'>git-html</a></span>");
@@ -65,14 +71,14 @@ var gitHtml_l = (function(e){
               clearInterval(ah);
             }
           },10);
-          if(location.href.indexOf('#gitHtml')!=-1){
+          if(location.href.indexOf('#gitHtml')>5){
             gitHtml_r();
           }
        }
       });
     });
   } 
-  else if(location.href.indexOf('#gitHtml')!=-1){
+  else if(location.href.indexOf('#gitHtml')>5){
     gitHtml_r();
   }
 })(document);
