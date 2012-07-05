@@ -41,7 +41,10 @@
             allow.innerHTML      = '+links';
             allow.style.position = 'absolute';
             allow.style.top      = '5px';
-            allow.style.left     = '40px';
+            if(location.href.indexOf('#gitHtml')==-1)
+              allow.style.left     = '40px';
+            else
+              allow.style.left     = '5px';
             allow.style.zIndex   = '99999';
             allow.className      = 'minibutton';
             allow.href           = 'javascript:;';
