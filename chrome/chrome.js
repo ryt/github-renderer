@@ -3,15 +3,16 @@ var gitHtml_r = (function(){
   s.src='//raw.github.com/ryt/githtml/master/githtml.min.js';
   d.body.appendChild(s);
 });
-var gitHtml_l = (function(){
-  $(".gitHtml-activate").addClass("gitHtml-clicked");
-  $(".gitHtml-tip").css('display','inline');
-  var tree = $(".tree-browser-wrapper"),
-      trec = tree.html(),
-      tren;
-      tren = trec.replace(/\/blob\//g,'/raw/').
-                  replace(/\.html\"/g,'.html#gitHtml"');
-      tree.html(tren);
+var gitHtml_l = (function(e){
+  e.addClass("gitHtml-clicked");
+  e.parents("div").children(".gitHtml-tip").css('display','inline');
+  $(".content").each(function(){
+      var trec = $(this).html(), tren;
+          tren = trec.replace(/\/blob\//g,'/raw/').
+                      replace(/\.html\"/g,'.html#gitHtml"');
+      $(this).html(tren);
+  });
+  $(".content .js-slide-to").removeClass();
   return false;
 });
 (function(d){
@@ -32,25 +33,46 @@ var gitHtml_l = (function(){
             "}"+
         "</style>"
       );
-      
-      if($("body").hasClass('page-blob')){
-        $(".bubble#files .file .meta div.info").
-            append("<span><a href='javascript:;' onclick='gitHtml_r();return false;' class='minibutton'>Render HTML</a></span>");
-      }
-      else if(location.href.indexOf('#gitHtml')!=-1){
-        gitHtml_r();
-      }
-      else {
-        $(".final-path").
-            after(" <a href='javascript:;' onclick='gitHtml_l();return false;' class='minibutton gitHtml-activate'>gitHtml</a> "+
-                   '<div class="tipsy tipsy-w gitHtml-tip" style="display:none;opacity:0.8;padding:2px 5px;margin-left:5px;">'+
-                      '<div class="tipsy-arrow tipsy-arrow-w"></div>'+
-                      '<div class="tipsy-inner" style="max-width:400px;">gitHtml activated. click on any html file below.</div>'+
-                   '</div>');
-     }        
+      $(".breadcrumb").append(' '+
+                 "<a href='javascript:;' onclick='gitHtml_l($(this));return false;' class='minibutton gitHtml-activate gitact git-html-btn'>git-html</a> "+
+                 '<div class="tipsy tipsy-w gitHtml-tip" style="display:none;opacity:0.8;padding:2px 5px;margin-left:5px;">'+
+                    '<div class="tipsy-arrow tipsy-arrow-w"></div>'+
+                    '<div class="tipsy-inner git-html-btn" style="max-width:400px;">gitHtml activated. click on any html file below.</div>'+
+                 '</div>');
+      $("body").click(function(e){
+        if($(e.target).hasClass("git-html-btn")===false){
+          var ca = setInterval(function(){ 
+            if($(".file-edit-link").is(":visible")){
+              if(location.href.indexOf('.html')!=-1){
+                  $(".gitrends").remove();
+                  $(".bubble#files .file .meta div.info").
+                      append("<span class='gitrends git-html-btn'><a href='javascript:;' onclick='gitHtml_r();return false;' class='minibutton git-html-btn'>git-html</a></span>");
+              }
+              clearInterval(ca);
+            }
+          },10);
+          var ah = setInterval(function(){
+              if($("div[data-path='"+(location.href.split('tree/master/')[1]+'/')+"']").is(":visible") && $(".file-edit-link").is(":visible")===false){
+                $(".gitact").remove();
+                $(".gitips").remove();
+                $(".breadcrumb").
+                    append(' '+
+                           "<div style='display:inline;'><a href='javascript:;' onclick='gitHtml_l($(this));return false;' class='minibutton gitHtml-activate gitact git-html-btn'>git-html</a> "+
+                           '<div class="tipsy tipsy-w gitHtml-tip gitips" style="display:none;opacity:0.8;padding:2px 5px;margin-left:5px;">'+
+                              '<div class="tipsy-arrow tipsy-arrow-w"></div>'+
+                              '<div class="tipsy-inner git-html-btn" style="max-width:400px;">gitHtml activated. click on any html file below.</div>'+
+                           '</div></div>');
+              clearInterval(ah);
+            }
+          },10);
+          if(location.href.indexOf('#gitHtml')!=-1){
+            gitHtml_r();
+          }
+       }
+      });
     });
   } 
-  else {
+  else if(location.href.indexOf('#gitHtml')!=-1){
     gitHtml_r();
   }
 })(document);

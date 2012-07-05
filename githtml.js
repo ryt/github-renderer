@@ -36,7 +36,8 @@
               window.location.reload();
               return false;
             });
-        d.body.appendChild(close);
+        if(location.href.indexOf('#gitHtml')==-1) 
+            d.body.appendChild(close);
         d.body.appendChild(ifr);
         d.body.style.padding   = '0px';
         d.body.style.margin    = '0px';
@@ -68,7 +69,10 @@
       var pr = hp.replace(/<div class=[\'|\"]line/g,'\n<div class="line').replace(/(<([^>]+)>)/ig,'');
           pr = pr.replace(/http\:([a-zA-Z0-9-_\.\/]+)bootstrap[a-zA-Z0-9-_\.\/\:]+css/g,link.bootstrap);
           pr = escape(gitHtml.decode(el,pr));
-          pr = pr.replace(/http/g,'https'); 
+          if(location.href.indexOf('#gitHtml')==-1)
+            pr = pr.replace(/http/g,'https');
+          else
+            pr = pr.replace(/\.html/g,'.html#gitHtml');
   	  pr = unescape(pr).replace(/\n/g,'--githtml-newline--').replace(/\s/g,' ').replace(/--githtml-newline--/g,'\n');
       gitHtml.open(
         unescape("%3Cbase%20href%3D%22"+escape(lo)+"%22%3E")+pr,d
