@@ -23,6 +23,7 @@
             ifr.style.position = 'absolute';
             ifr.style.top      = '0px';
             ifr.style.zIndex   = '9999';
+            ifr.style.background = '#fff';
             ifr.id             = 'iframe';
        var  close                = d.createElement('a');
             close.innerHTML      = 'x';
@@ -71,8 +72,8 @@
           pr = escape(gitHtml.decode(el,pr));
           if(location.href.indexOf('#gitHtml')==-1)
             pr = pr.replace(/http/g,'https');
-          else
-            pr = pr.replace(/\.html/g,'.html#gitHtml');
+          pr = pr.replace(/\.html/g,'.html#gitHtml');
+            
   	  pr = unescape(pr).replace(/\n/g,'--githtml-newline--').replace(/\s/g,' ').replace(/--githtml-newline--/g,'\n');
       gitHtml.open(
         unescape("%3Cbase%20href%3D%22"+escape(lo)+"%22%3E")+pr,d
