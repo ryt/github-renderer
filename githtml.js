@@ -37,8 +37,48 @@
               window.location.reload();
               return false;
             });
-        if(location.href.indexOf('#gitHtml')==-1) 
+       var  allow                = d.createElement('a');
+            allow.innerHTML      = '+links';
+            allow.style.position = 'absolute';
+            allow.style.top      = '5px';
+            allow.style.left     = '40px';
+            allow.style.zIndex   = '99999';
+            allow.className      = 'minibutton';
+            allow.href           = 'javascript:;';
+            allow.onclick        = (function(){
+              this.style.cssText = this.style.cssText+';'+
+                                   "color:#fff;"+
+                                   "text-decoration:none;"+
+                                   "text-shadow:0 -1px 0 rgba(0,0,0,0.3);"+
+                                   "border-color:#518cc6;"+
+                                   "border-bottom-color:#2a65a0;"+
+                                   "background:#599bdc;"+
+                                   "background:-moz-linear-gradient(#599bdc,#3072b3);"+
+                                   "background:-webkit-linear-gradient(#599bdc,#3072b3);";
+                var ifrm = d.getElementById('iframe');
+                    ifrm = (ifrm.contentDocument.document) 
+                            ? ifrm.contentDocument.document 
+                            : ifrm.contentDocument;
+                var all = ifrm.getElementsByTagName('a');
+                    for(var i = 0; i<all.length; i++){
+                      all[i].onclick = function(){
+                        location.href = this.href;
+                        return false;
+                      }
+                    }
+              return false;
+            });          
+        if(location.href.indexOf('#gitHtml')==-1){
             d.body.appendChild(close);
+        } 
+        else {
+          var css = document.createElement('link');
+              css.type = 'text/css';
+              css.rel = 'stylesheet';
+              css.href = 'https://a248.e.akamai.net/assets.github.com/assets/github-25f0cdc450c8628e99f0aca61ea96d2e66e045c5.css';
+            d.body.appendChild(css);
+        }
+        d.body.appendChild(allow);
         d.body.appendChild(ifr);
         d.body.style.padding   = '0px';
         d.body.style.margin    = '0px';

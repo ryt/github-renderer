@@ -1,3 +1,7 @@
+/*!
+ * githtml.js
+ * github.com/ryt/githtml, Copyright ryt@github
+ */
 var gitHtml_r = (function(){
   var d=document,s=d.createElement('script');
   s.src='//raw.github.com/ryt/githtml/master/githtml.min.js';
