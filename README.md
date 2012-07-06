@@ -2,8 +2,11 @@ githtml
 ===========
 > githtml is a utility that lets you view rendered HTML pages from github repositories on the fly.
 
+<a href="http://ryt.github.com/githtml/">Install</a>
+----------------------------------------------------
+Install from http://ryt.github.com/githtml/
 
-Install
+Old Install
 -------
 * Create a new bookmark in your bookmarks bar named `git-html`<br>
 * Copy and paste the following code as the link or URL of the bookmark. 
