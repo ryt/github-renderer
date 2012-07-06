@@ -31,7 +31,7 @@
             close.style.top      = '5px';
             close.style.left     = '5px';
             close.style.zIndex   = '99999';
-            close.className      = 'minibutton alter';
+            close.className      = 'minibutton';
             close.href           = 'javascript:;';
             close.onclick        = (function(){
               window.location.reload();
@@ -46,7 +46,7 @@
             else
               allow.style.left     = '5px';
             allow.style.zIndex   = '99999';
-            allow.className      = 'minibutton alter';
+            allow.className      = 'minibutton';
             allow.href           = 'javascript:;';
             allow.onclick        = (function(){
               this.style.cssText = this.style.cssText+';'+
@@ -70,11 +70,9 @@
                       }
                     }
               return false;
-            }); 
-        var tileft = 65;
+            });          
         if(location.href.indexOf('#gitHtml')==-1){
             d.body.appendChild(close);
-            tileft = 100;
         } 
         else {
           var css = document.createElement('link');
@@ -87,18 +85,6 @@
         d.body.appendChild(ifr);
         d.body.style.padding   = '0px';
         d.body.style.margin    = '0px';
-        d.body.onkeyup = function(e){
-          if(e.keyCode == 9){
-            var al = document.getElementsByClassName('alter');
-            for(var i = 0; i<al.length; i++){
-              if(al[i].style.display == 'none')
-                al[i].style.display = 'inline'
-              else
-                al[i].style.display = 'none'
-            }
-          }
-        }
-        d.body.innerHTML = d.body.innerHTML + '<div class="tipsy alter tipsy-w gitHtml-tip" style="display: inline; opacity: 0.8; padding: 2px 5px; margin-left: 5px; position: absolute;top: 5px;left: '+tileft+'px;"><div class="tipsy-arrow tipsy-arrow-w"></div><div class="tipsy-inner git-html-btn" style="max-width:400px;">&lt;tab&gt; to toggle</div></div>';
       var ifrm = d.getElementById('iframe');
           ifrm = (ifrm.contentWindow) 
                ? ifrm.contentWindow 
@@ -106,7 +92,7 @@
                   ? ifrm.contentDocument.document 
                   : ifrm.contentDocument;
           ifrm.document.open();
-          if(c.indexOf('githtml.min.js')>5){
+          if(c.indexOf('githtml.min.js')!=-1){
             c = '---> click the [x] on the left and try "git-html" again';
           }
           ifrm.document.write(c);
