@@ -4,6 +4,18 @@
  * github.com/ryt/githtml
  * Copyright 2012, Rediat Mentoses
  */
+  var cel = function(tag,prop,ap){
+    var c=document.createElement(tag);
+    for(p in prop){
+      if(typeof prop[p] == 'object'){
+        for(q in prop[p])
+          c[p][q] = prop[p][q];
+      }
+      else c[p] = prop[p];
+    }
+    if(ap) ap.appendChild(c);
+    return c;
+  }
   var gitHtml = {
     decode: (function(el,str){
       if(str && typeof str === 'string'){
@@ -16,70 +28,78 @@
       return str;
     }),
     open: (function(c,d) {
-        var ifr                = d.createElement('iframe');
-            ifr.src            = 'about:blank';
-            ifr.style.width    = '100%';
-            ifr.style.height   = '100%';
-            ifr.style.position = 'absolute';
-            ifr.style.top      = '0px';
-            ifr.style.zIndex   = '9999';
-            ifr.style.background = '#fff';
-            ifr.id             = 'iframe';
-       var  close                = d.createElement('a');
-            close.innerHTML      = 'x';
-            close.style.position = 'absolute';
-            close.style.top      = '5px';
-            close.style.left     = '5px';
-            close.style.zIndex   = '99999';
-            close.className      = 'minibutton';
-            close.href           = 'javascript:;';
-            close.onclick        = (function(){
-              window.location.reload();
+        var ifr = cel('iframe',{
+            src: 'about:blank',
+            style: {
+              width:      '100%',
+              height:     '100%',
+              position:   'absolute',
+              top:        '0px',
+              zIndex:     '9999',
+              background: '#fff'
+            },
+            id:  'iframe'
+        }, false);
+        var close = cel('a',{
+            innerHTML:  'x',
+            style: {
+              position: 'absolute',
+              top:      '5px',
+              left:     '5px',
+              zIndex:   '99999'
+            },
+            className: 'minibutton',
+            href:      'javascript:;',
+            onclick: (function(){
+              location.reload();
               return false;
-            });
-       var  allow                = d.createElement('a');
-            allow.innerHTML      = '+links';
-            allow.style.position = 'absolute';
-            allow.style.top      = '5px';
-            if(location.href.indexOf('#gitHtml')==-1)
-              allow.style.left     = '40px';
-            else
-              allow.style.left     = '5px';
-            allow.style.zIndex   = '99999';
-            allow.className      = 'minibutton';
-            allow.href           = 'javascript:;';
-            allow.onclick        = (function(){
-              this.style.cssText = this.style.cssText+';'+
-                                   "color:#fff;"+
-                                   "text-decoration:none;"+
-                                   "text-shadow:0 -1px 0 rgba(0,0,0,0.3);"+
-                                   "border-color:#518cc6;"+
-                                   "border-bottom-color:#2a65a0;"+
-                                   "background:#599bdc;"+
-                                   "background:-moz-linear-gradient(#599bdc,#3072b3);"+
-                                   "background:-webkit-linear-gradient(#599bdc,#3072b3);";
-                var ifrm = d.getElementById('iframe');
-                    ifrm = (ifrm.contentDocument.document) 
-                            ? ifrm.contentDocument.document 
-                            : ifrm.contentDocument;
-                var all = ifrm.getElementsByTagName('a');
-                    for(var i = 0; i<all.length; i++){
-                      all[i].onclick = function(){
-                        location.href = this.href;
-                        return false;
+            })
+        },false);
+        var allow = cel('a',{
+          innerHTML:  '+links+',
+          style:{
+            position: 'absolute',
+            top:      '5px',
+            left:     '5px',
+            zIndex:   '99999'
+          },
+          className:  'minibutton',
+          href:       'javascript:;',
+          onclick: (function(){
+                this.style.cssText = this.style.cssText+';'+
+                                     "color:#fff;"+
+                                     "text-decoration:none;"+
+                                     "text-shadow:0 -1px 0 rgba(0,0,0,0.3);"+
+                                     "border-color:#518cc6;"+
+                                     "border-bottom-color:#2a65a0;"+
+                                     "background:#599bdc;"+
+                                     "background:-moz-linear-gradient(#599bdc,#3072b3);"+
+                                     "background:-webkit-linear-gradient(#599bdc,#3072b3);";
+                  var ifrm = d.getElementById('iframe');
+                      ifrm = (ifrm.contentDocument.document) 
+                              ? ifrm.contentDocument.document 
+                              : ifrm.contentDocument;
+                  var all = ifrm.getElementsByTagName('a');
+                      for(var i = 0; i<all.length; i++){
+                        all[i].onclick = function(){
+                          location.href = this.href;
+                          return false;
+                        }
                       }
-                    }
-              return false;
-            });          
+                return false;        
+          })
+        },false);
+          
         if(location.href.indexOf('#gitHtml')==-1){
+            allow.style.left = '40px';
             d.body.appendChild(close);
         } 
         else {
-          var css = document.createElement('link');
-              css.type = 'text/css';
-              css.rel = 'stylesheet';
-              css.href = 'https://a248.e.akamai.net/assets.github.com/assets/github-25f0cdc450c8628e99f0aca61ea96d2e66e045c5.css';
-            d.body.appendChild(css);
+          cel('link',{
+            type: 'text/css',
+            rel:  'stylesheet',
+            href: 'https://a248.e.akamai.net/assets.github.com/assets/github-25f0cdc450c8628e99f0aca61ea96d2e66e045c5.css'
+          },d.body);
         }
         d.body.appendChild(allow);
         d.body.appendChild(ifr);
