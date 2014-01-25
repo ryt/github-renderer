@@ -1,7 +1,7 @@
 
 var gitHtml_r = (function(){
   var d = document,s=d.createElement('script');
-  s.src = '//raw.github.com/ryt/github-renderer/master/githtml.js';
+  s.src = '//raw.github.com/ryt/github-renderer/master/render.js';
   d.body.appendChild(s);
 });
 
@@ -56,7 +56,7 @@ var gitHtml_l = (function(e){
               if ( location.href.indexOf('.html') > 5 ) {
                   $(".gitrends").remove();
                   $(".bubble#files .file .meta div.info").
-                      append("<span class='gitrends git-html-btn'><a href='javascript:;' onclick='gitHtml_r();return false;' class='minibutton git-html-btn'>git-html</a></span>");
+                      append("<span class='gitrends git-html-btn'><a href='javascript:;' onclick='gitHtml_r();return false;' class='minibutton git-html-btn'>github-renderer</a></span>");
               }
               clearInterval(ca);
             }

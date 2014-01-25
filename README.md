@@ -7,12 +7,12 @@ github-renderer
 
 
 ```javascript
-javascript:(function(){var d=document,s=d.createElement('script');s.src='//raw.github.com/ryt/github-renderer/master/githtml.js';d.body.appendChild(s);})();
+javascript:(function(){var d=document,s=d.createElement('script');s.src='//raw.github.com/ryt/github-renderer/master/render.js';d.body.appendChild(s);})();
 ```
 
 
 Alternatively, if github allows you, you can drag 
-<a href="javascript:(function(){var d=document,s=d.createElement('script');s.src='//raw.github.com/ryt/github-renderer/master/githtml.js';d.body.appendChild(s);})();" title="github-renderer">[this]</a> to your bookmarks bar.
+<a href="javascript:(function(){var d=document,s=d.createElement('script');s.src='//raw.github.com/ryt/github-renderer/master/render.js';d.body.appendChild(s);})();" title="github-renderer">[this]</a> to your bookmarks bar.
 
 Usage
 =====
@@ -21,7 +21,7 @@ Browse them and click on the "github-renderer" bookmark to render them.
 
 Note: make sure you allow pop-ups from *.github.com in your browser.
 
-> Note 2: This works best with Chrome or Safari. Firefox won't load js and css files for some of these links. Will fix soon.
+> Note 2: This works best with Chrome or Safari. Firefox won't load js and css files for some of these links. 
 
 * <a href="https://github.com/mrdoob/three.js/blob/master/examples/canvas_interactive_cubes_tween.html">Three.js 1</a>
 * <a href="https://github.com/mrdoob/three.js/blob/master/examples/webgl_trackballcamera_earth.html">Three.js webgl earth</a>
