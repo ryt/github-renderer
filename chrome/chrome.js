@@ -1,7 +1,7 @@
 
 var gitHtml_r = (function(){
-  var d=document,s=d.createElement('script');
-  s.src='//raw.github.com/ryt/githtml/master/githtml.min.js';
+  var d = document,s=d.createElement('script');
+  s.src = '//raw.github.com/ryt/github-renderer/master/githtml.js';
   d.body.appendChild(s);
 });
 
@@ -36,7 +36,7 @@ var gitHtml_l = (function(e){
             "}"+
         "</style>"
       );
-      if(location.href.indexOf('.htm')>5){
+      if ( location.href.indexOf('.htm') > 5 ) {
         $(".bubble#files .file .meta div.info").
             append("<span class='gitrends git-html-btn'><a href='javascript:;' onclick='gitHtml_r();return false;' class='minibutton git-html-btn'>git-html</a></span>");      
       } 
@@ -52,8 +52,8 @@ var gitHtml_l = (function(e){
       $("body").click(function(e){
         if ( $(e.target).hasClass("git-html-btn") === false ) {
           var ca = setInterval(function(){ 
-            if($(".file-edit-link").is(":visible")){
-              if(location.href.indexOf('.html')>5){
+            if ( $(".file-edit-link").is(":visible")) {
+              if ( location.href.indexOf('.html') > 5 ) {
                   $(".gitrends").remove();
                   $(".bubble#files .file .meta div.info").
                       append("<span class='gitrends git-html-btn'><a href='javascript:;' onclick='gitHtml_r();return false;' class='minibutton git-html-btn'>git-html</a></span>");
@@ -63,7 +63,7 @@ var gitHtml_l = (function(e){
           },10);
 
           var ah = setInterval(function(){
-              if($("div[data-path='"+(location.href.split('tree/master/')[1]+'/')+"']").is(":visible") && $(".file-edit-link").is(":visible")===false){
+              if ( $("div[data-path='"+(location.href.split('tree/master/')[1]+'/')+"']").is(":visible") && $(".file-edit-link").is(":visible") === false ) {
                 $(".gitact").remove();
                 $(".gitips").remove();
                 $(".breadcrumb").
